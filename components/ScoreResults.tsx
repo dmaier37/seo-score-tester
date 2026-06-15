@@ -244,20 +244,23 @@ export default function ScoreResults({ results, auditData, onRetry }: Props) {
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <div style={{ fontSize: '0.7rem', color: '#a78bfa', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 600, marginBottom: '0.5rem' }}>Done For You</div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem', marginBottom: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.25rem', marginBottom: '0.25rem' }}>
                 <span className="font-display" style={{ fontSize: '2rem', fontWeight: 800, color: 'white' }}>Free</span>
                 <span style={{ color: 'var(--muted)', fontSize: '0.8rem' }}>strategy call</span>
               </div>
-              <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.55 }}>Book a free 30-min call. I'll review your score live and we'll build a plan to fix it.</p>
+              <div style={{ background: 'rgba(108,71,255,0.25)', border: '1px solid rgba(108,71,255,0.5)', borderRadius: '8px', padding: '0.4rem 0.75rem', marginBottom: '0.75rem', display: 'inline-block' }}>
+                <span style={{ fontSize: '0.8rem', color: '#c4b5fd', fontWeight: 700 }}>$97/mo ongoing SEO + monthly reports</span>
+              </div>
+              <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.55 }}>Already bought the report? Apply your $47 toward this — just pay $50 to start.</p>
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1.25rem', flex: 1 }}>
-              {['Free 30-min strategy call', 'I handle all the fixes for you', 'Score improves every month', 'Monthly reports showing progress'].map(f => (
+              {['Free 30-min strategy call — no pressure', 'I handle every fix for you', 'Your score improves every single month', 'Rank higher on Google, get more leads', 'Monthly report so you see the progress'].map(f => (
                 <li key={f} style={{ display: 'flex', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--muted)' }}>
                   <span style={{ color: '#a78bfa', flexShrink: 0 }}>✓</span>{f}
                 </li>
               ))}
             </ul>
-            <a href="https://calendar.app.google/vchpwuG2TZdY6d6DA"
+            <a href="https://calendly.com/PLACEHOLDER"
               style={{ display: 'block', textAlign: 'center', background: 'var(--accent)', color: 'white', borderRadius: '10px', padding: '0.8rem', fontSize: '0.875rem', fontWeight: 700, textDecoration: 'none', fontFamily: 'Space Grotesk, sans-serif' }}
               onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>

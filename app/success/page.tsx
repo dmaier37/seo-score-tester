@@ -29,11 +29,22 @@ export default function SuccessPage() {
         </div>
 
         <div style={{ background: 'linear-gradient(135deg,rgba(108,71,255,0.15),rgba(108,71,255,0.05))', border: '1px solid rgba(108,71,255,0.3)', borderRadius: '16px', padding: '1.5rem', marginBottom: '2rem' }}>
-          <p style={{ fontSize: '0.95rem', fontWeight: 600, marginBottom: '0.5rem' }}>Rather have me handle it for you?</p>
-          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', marginBottom: '1rem', lineHeight: 1.55 }}>
-            Book a free 30-min call. I'll walk through your report, answer your questions, and fix everything for you — with monthly updates so your score keeps improving.
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <p style={{ fontSize: '0.95rem', fontWeight: 600, margin: 0 }}>Rather have me handle it for you?</p>
+            <div style={{ background: 'rgba(108,71,255,0.2)', border: '1px solid rgba(108,71,255,0.4)', borderRadius: '100px', padding: '0.2rem 0.75rem' }}>
+              <span style={{ fontSize: '0.75rem', color: '#a78bfa', fontWeight: 700 }}>$97/mo ongoing support</span>
+            </div>
+          </div>
+          <p style={{ color: 'var(--muted)', fontSize: '0.85rem', marginBottom: '0.75rem', lineHeight: 1.55 }}>
+            Got the report but feeling stuck? No problem — your $47 counts as a credit toward our full Done-For-You service.
           </p>
-          <a href="https://calendar.app.google/vchpwuG2TZdY6d6DA"
+          <div style={{ background: 'rgba(108,71,255,0.1)', borderRadius: '10px', padding: '0.75rem 1rem', marginBottom: '1rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+            <span style={{ fontSize: '0.85rem', flexShrink: 0 }}>💡</span>
+            <p style={{ fontSize: '0.8rem', color: '#a78bfa', margin: 0, lineHeight: 1.5 }}>
+              <strong>How it works:</strong> Book a free call → we review your report together → if you want me to handle it, just pay the remaining $50 ($97 total − your $47 credit).
+            </p>
+          </div>
+          <a href="https://calendly.com/PLACEHOLDER"
             style={{ display: 'block', textAlign: 'center', background: 'var(--accent)', color: 'white', borderRadius: '10px', padding: '0.8rem', fontSize: '0.875rem', fontWeight: 700, textDecoration: 'none', fontFamily: 'Space Grotesk, sans-serif' }}>
             📅 Book My Free Strategy Call
           </a>

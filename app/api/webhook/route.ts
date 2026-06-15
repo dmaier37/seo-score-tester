@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
   if (event.type === 'payment_intent.succeeded') {
     const intent = event.data.object as any
 
-    // Payment links fire payment_intent.succeeded — email and audit live on the Checkout Session
+    // Payment links fire payment_intent.succeeded — email lives on the Checkout Session
     const sessions = await stripe.checkout.sessions.list({ payment_intent: intent.id, limit: 1 })
     const session = sessions.data[0]
 
