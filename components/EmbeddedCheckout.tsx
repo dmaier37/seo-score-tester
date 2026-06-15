@@ -35,7 +35,7 @@ export default function EmbeddedCheckoutModal({ auditData, onClose }: Props) {
         if (data.clientSecret) {
           setClientSecret(data.clientSecret)
         } else {
-          setError('Could not load checkout. Please try again.')
+          setError(data.error || 'Could not load checkout. Please try again.')
         }
       })
       .catch(() => setError('Could not load checkout. Please try again.'))
