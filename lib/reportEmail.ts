@@ -1,7 +1,5 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 function getScoreColor(score: number) {
   if (score >= 80) return '#22c55e'
   if (score >= 60) return '#f59e0b'
@@ -132,6 +130,7 @@ export async function sendScoreEmail(data: {
 </body>
 </html>`
 
+  const resend = new Resend(process.env.RESEND_API_KEY)
   return resend.emails.send({
     from: 'ESMIAN SEO <onboarding@resend.dev>',
     replyTo: 'contact@esmian.com',
@@ -209,6 +208,7 @@ export async function sendScorePreviewEmail(data: {
 </body>
 </html>`
 
+  const resend = new Resend(process.env.RESEND_API_KEY)
   return resend.emails.send({
     from: 'ESMIAN SEO <onboarding@resend.dev>',
     replyTo: 'contact@esmian.com',
