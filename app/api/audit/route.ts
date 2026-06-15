@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { Redis } from '@upstash/redis'
 import { notifyNewLead } from '@/lib/adminNotify'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
@@ -307,6 +308,16 @@ Respond ONLY with valid JSON, no markdown.`
       headline: aiContent.headline,
       summary: aiContent.summary,
       urgencyMessage: aiContent.urgencyMessage,
+    }
+
+    // Persist audit data to Redis so webhook can retrieve it after payment (24hr TTL)
+    if (email) {
+      try {
+        const redis = Redis.fromEnv()
+        await redis.set(`audit:${email}`, { email, businessName, url, keyword: keyword || '', location: location || '', overallScore, categories, checks }, { ex: 86400 })
+      } catch (e) {
+        console.error('Redis save failed (non-fatal):', e)
+      }
     }
 
     // Fire admin notification in background (don't await — don't slow down response)

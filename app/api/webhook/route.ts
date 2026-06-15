@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
+import { Redis } from '@upstash/redis'
 import { getAudit, deleteAudit } from '@/lib/auditStore'
 import { notifyPayment } from '@/lib/adminNotify'
 import { sendScoreEmail } from '@/lib/reportEmail'
@@ -14,7 +15,21 @@ function auditFromMetadata(metadata: Record<string, string>) {
 
 async function fulfillOrder(email: string, amountPaid: number, stripeId: string, audit: any) {
   if (!audit) {
-    // Fall back to in-memory store (works when checkout and webhook hit the same instance)
+    // Try Redis first (persists across serverless instances)
+    try {
+      const redis = Redis.fromEnv()
+      audit = await redis.get(`audit:${email}`)
+      if (audit) {
+        console.log(`✅ Audit data loaded from Redis for ${email}`)
+        await redis.del(`audit:${email}`)
+      }
+    } catch (e) {
+      console.error('Redis get failed (non-fatal):', e)
+    }
+  }
+
+  if (!audit) {
+    // Final fallback: in-memory store
     audit = getAudit(email)
   }
 
