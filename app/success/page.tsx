@@ -36,7 +36,7 @@ export default function SuccessPage() {
             </div>
           </div>
           <p style={{ color: 'var(--muted)', fontSize: '0.85rem', marginBottom: '0.75rem', lineHeight: 1.55 }}>
-            Got the report but feeling stuck? No problem — your $47 counts as a credit toward our full Done-For-You service.
+            Got the report but feeling stuck? No problem — book your free call, sign up for ongoing support, and get your <strong style={{ color: '#22c55e' }}>first 3 months completely free</strong>. Your $47 also applies as a credit.
           </p>
           <div style={{ background: 'rgba(108,71,255,0.1)', borderRadius: '10px', padding: '0.75rem 1rem', marginBottom: '1rem', display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
             <span style={{ fontSize: '0.85rem', flexShrink: 0 }}>💡</span>
@@ -46,7 +46,7 @@ export default function SuccessPage() {
           </div>
           <a href="https://calendly.com/PLACEHOLDER"
             style={{ display: 'block', textAlign: 'center', background: 'var(--accent)', color: 'white', borderRadius: '10px', padding: '0.8rem', fontSize: '0.875rem', fontWeight: 700, textDecoration: 'none', fontFamily: 'Space Grotesk, sans-serif' }}>
-            📅 Book My Free Strategy Call
+            📅 Book My Free Call — Get 3 Months Free
           </a>
         </div>
 
