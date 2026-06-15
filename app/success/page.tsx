@@ -33,7 +33,7 @@ export default function SuccessPage() {
           <p style={{ color: 'var(--muted)', fontSize: '0.85rem', marginBottom: '1rem', lineHeight: 1.55 }}>
             Book a free 30-min call. I'll walk through your report, answer your questions, and fix everything for you — with monthly updates so your score keeps improving.
           </p>
-          <a href="https://calendly.com/PLACEHOLDER"
+          <a href="https://calendar.app.google/vchpwuG2TZdY6d6DA"
             style={{ display: 'block', textAlign: 'center', background: 'var(--accent)', color: 'white', borderRadius: '10px', padding: '0.8rem', fontSize: '0.875rem', fontWeight: 700, textDecoration: 'none', fontFamily: 'Space Grotesk, sans-serif' }}>
             📅 Book My Free Strategy Call
           </a>

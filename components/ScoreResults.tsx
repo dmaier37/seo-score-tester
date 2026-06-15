@@ -277,7 +277,7 @@ export default function ScoreResults({ results, auditData, onRetry }: Props) {
                 </li>
               ))}
             </ul>
-            <a href="https://calendly.com/PLACEHOLDER"
+            <a href="https://calendar.app.google/vchpwuG2TZdY6d6DA"
               style={{ display: 'block', textAlign: 'center', background: 'var(--accent)', color: 'white', borderRadius: '10px', padding: '0.8rem', fontSize: '0.875rem', fontWeight: 700, textDecoration: 'none', fontFamily: 'Space Grotesk, sans-serif' }}
               onMouseEnter={e => (e.currentTarget.style.opacity = '0.85')}
               onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
