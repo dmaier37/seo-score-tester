@@ -39,6 +39,21 @@ export default function SuccessPage() {
           </a>
         </div>
 
+        <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '16px', padding: '1.25rem 1.5rem', marginBottom: '1.5rem', textAlign: 'left' }}>
+          <p style={{ fontSize: '0.8rem', color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, marginBottom: '0.75rem' }}>Need help? Reach out directly:</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <a href="mailto:contact@esmian.com" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text)', textDecoration: 'none', fontSize: '0.9rem' }}>
+              <span>📧</span> contact@esmian.com
+            </a>
+            <a href="tel:+1PLACEHOLDER" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text)', textDecoration: 'none', fontSize: '0.9rem' }}>
+              <span>📞</span> (XXX) XXX-XXXX
+            </a>
+          </div>
+          <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.75rem', lineHeight: 1.5 }}>
+            If your report doesn't arrive within 5 minutes, check your spam folder or email us and we'll send it manually right away.
+          </p>
+        </div>
+
         <a href="/" style={{ color: 'var(--muted)', fontSize: '0.85rem', textDecoration: 'none' }}>
           ← Test another website
         </a>
