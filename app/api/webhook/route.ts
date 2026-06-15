@@ -15,7 +15,6 @@ function auditFromMetadata(metadata: Record<string, string>) {
 
 async function fulfillOrder(email: string, amountPaid: number, stripeId: string, audit: any) {
   if (!audit) {
-    // Try Redis first (persists across serverless instances)
     try {
       const redis = Redis.fromEnv()
       audit = await redis.get(`audit:${email}`)
@@ -29,39 +28,42 @@ async function fulfillOrder(email: string, amountPaid: number, stripeId: string,
   }
 
   if (!audit) {
-    // Final fallback: in-memory store
     audit = getAudit(email)
   }
 
-  if (!audit) {
-    console.error('No audit data available for:', email)
-    return
+  if (audit) {
+    try {
+      await sendScoreEmail({
+        email: audit.email,
+        businessName: audit.businessName,
+        url: audit.url,
+        keyword: audit.keyword,
+        location: audit.location,
+        overallScore: audit.overallScore,
+        categories: audit.categories,
+        checks: audit.checks,
+      })
+      deleteAudit(email)
+      console.log(`✅ Full report sent to ${email}`)
+    } catch (e) {
+      console.error('Failed to send report email:', e)
+    }
+  } else {
+    console.error('No audit data found for:', email, '— skipping report email')
   }
 
+  // Always notify admin of payment, even without audit data
   try {
-    await sendScoreEmail({
-      email: audit.email,
-      businessName: audit.businessName,
-      url: audit.url,
-      keyword: audit.keyword,
-      location: audit.location,
-      overallScore: audit.overallScore,
-      categories: audit.categories,
-      checks: audit.checks,
-    })
-    deleteAudit(email)
-    console.log(`✅ Full report sent to ${email}`)
-
-    notifyPayment({
-      email: audit.email,
-      businessName: audit.businessName,
-      url: audit.url,
-      overallScore: audit.overallScore,
+    await notifyPayment({
+      email: audit?.email || email,
+      businessName: audit?.businessName || '(unknown)',
+      url: audit?.url || '(unknown)',
+      overallScore: audit?.overallScore || 0,
       amountPaid,
       stripeSessionId: stripeId,
-    }).catch(e => console.error('Admin payment notify failed:', e))
+    })
   } catch (e) {
-    console.error('Failed to send report email:', e)
+    console.error('Admin payment notify failed:', e)
   }
 }
 
