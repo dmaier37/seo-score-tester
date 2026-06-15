@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { notifyNewLead } from '@/lib/adminNotify'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -299,14 +300,28 @@ Respond ONLY with valid JSON, no markdown.`
     const raw = '{' + (message.content[0] as { type: string; text: string }).text
     const aiContent = JSON.parse(raw)
 
-    return NextResponse.json({
+    const responseData = {
       overallScore,
       categories,
       checks,
       headline: aiContent.headline,
       summary: aiContent.summary,
       urgencyMessage: aiContent.urgencyMessage,
-    })
+    }
+
+    // Fire admin notification in background (don't await — don't slow down response)
+    notifyNewLead({
+      email: email || '',
+      businessName,
+      url,
+      keyword: keyword || '',
+      location: location || '',
+      overallScore,
+      categories,
+      checks,
+    }).catch(e => console.error('Admin notify failed:', e))
+
+    return NextResponse.json(responseData)
   } catch (e) {
     console.error(e)
     return NextResponse.json({ error: 'Audit failed' }, { status: 500 })

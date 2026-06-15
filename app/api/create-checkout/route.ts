@@ -11,7 +11,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required data' }, { status: 400 })
     }
 
-    // Save audit data so webhook can retrieve it after payment
     saveAudit(email, { email, businessName, url, keyword, location, overallScore, categories, checks })
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://seo-score-tester.vercel.app'
@@ -20,29 +19,25 @@ export async function POST(req: NextRequest) {
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
+      ui_mode: 'embedded' as any,
       line_items: [
         {
           price_data: {
             currency: 'usd',
             product_data: {
               name: `SEO Fix Report — ${businessName}`,
-              description: `Full prioritized fix report for ${url}. Score: ${overallScore}/100. Delivered instantly to ${email}.`,
+              description: `Full prioritized fix report for ${url}. Score: ${overallScore}/100.`,
             },
-            unit_amount: 4700, // $47.00
+            unit_amount: 4700,
           },
           quantity: 1,
         },
       ],
-      metadata: {
-        email,
-        businessName,
-        url,
-      },
-      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}`,
+      metadata: { email, businessName, url },
+      return_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
     })
 
-    return NextResponse.json({ url: session.url })
+    return NextResponse.json({ clientSecret: session.client_secret })
   } catch (e: any) {
     console.error('Checkout error:', e)
     return NextResponse.json({ error: e.message || 'Failed to create checkout' }, { status: 500 })

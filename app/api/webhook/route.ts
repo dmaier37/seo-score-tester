@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getAudit, deleteAudit } from '@/lib/auditStore'
+import { notifyPayment } from '@/lib/adminNotify'
 import { sendScoreEmail } from '@/lib/reportEmail'
 
 export async function POST(req: NextRequest) {
@@ -48,6 +49,16 @@ export async function POST(req: NextRequest) {
       })
       deleteAudit(email)
       console.log(`✅ Full report sent to ${email}`)
+
+      // Notify admin of payment
+      notifyPayment({
+        email: audit.email,
+        businessName: audit.businessName,
+        url: audit.url,
+        overallScore: audit.overallScore,
+        amountPaid: session.amount_total || 4700,
+        stripeSessionId: session.id,
+      }).catch(e => console.error('Admin payment notify failed:', e))
     } catch (e) {
       console.error('Failed to send report email:', e)
     }

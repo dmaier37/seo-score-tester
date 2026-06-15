@@ -119,7 +119,7 @@ export async function sendScoreEmail(data: {
   <div style="background:linear-gradient(135deg,rgba(108,71,255,0.2),rgba(108,71,255,0.05));border:1px solid rgba(108,71,255,0.4);border-radius:20px;padding:32px;text-align:center;margin-bottom:24px;">
     <h2 style="color:#f0f0f5;font-size:20px;font-weight:700;margin:0 0 10px;">Don't want to do this yourself?</h2>
     <p style="color:#8888aa;font-size:14px;margin:0 0 24px;line-height:1.6;">Book a free 30-minute call. I'll walk through your results, handle all the fixes for you, and improve your score every single month.</p>
-    <a href="https://calendar.app.google/vchpwuG2TZdY6d6DA" style="display:inline-block;background:#6c47ff;color:white;border-radius:12px;padding:14px 32px;font-size:15px;font-weight:700;text-decoration:none;">📅 Book My Free Strategy Call</a>
+    <a href="https://calendly.com/PLACEHOLDER" style="display:inline-block;background:#6c47ff;color:white;border-radius:12px;padding:14px 32px;font-size:15px;font-weight:700;text-decoration:none;">📅 Book My Free Strategy Call</a>
   </div>
 
   <div style="text-align:center;padding-top:24px;border-top:1px solid #2a2a3a;">
@@ -198,7 +198,7 @@ export async function sendScorePreviewEmail(data: {
     <h2 style="color:#f0f0f5;font-size:18px;font-weight:700;margin:0 0 10px;">See exactly how to fix it</h2>
     <p style="color:#8888aa;font-size:13px;margin:0 0 20px;line-height:1.6;">Unlock your full report with all ${failedCount} specific fixes, prioritized by impact — so you know exactly what to do first.</p>
     <a href="https://buy.stripe.com/PLACEHOLDER" style="display:inline-block;background:#6c47ff;color:white;border-radius:12px;padding:14px 32px;font-size:15px;font-weight:700;text-decoration:none;margin-bottom:12px;">Unlock Full Fix Report — $47</a>
-    <p style="color:#555566;font-size:12px;margin:8px 0 0;">Or book a free call and I'll handle everything for you →<br><a href="https://calendar.app.google/vchpwuG2TZdY6d6DA" style="color:#a78bfa;">Schedule a free strategy call</a></p>
+    <p style="color:#555566;font-size:12px;margin:8px 0 0;">Or book a free call and I'll handle everything for you →<br><a href="https://calendly.com/PLACEHOLDER" style="color:#a78bfa;">Schedule a free strategy call</a></p>
   </div>
 
   <div style="text-align:center;padding-top:20px;border-top:1px solid #2a2a3a;">
