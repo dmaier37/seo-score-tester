@@ -54,7 +54,7 @@ export default function ScoreResults({ results, auditData, onRetry }: Props) {
   const [checkoutLoading, setCheckoutLoading] = useState(false)
 
   const handleUnlock = () => {
-    window.location.href = 'https://buy.stripe.com/test_4gM14p9YI5oAdPaddL1VK00'
+    window.location.href = 'https://buy.stripe.com/28E3cxfj2eZabH2a1z1VK01'
   }
 
   const score = results.overallScore
