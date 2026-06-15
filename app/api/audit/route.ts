@@ -320,17 +320,21 @@ Respond ONLY with valid JSON, no markdown.`
       }
     }
 
-    // Fire admin notification in background (don't await — don't slow down response)
-    notifyNewLead({
-      email: email || '',
-      businessName,
-      url,
-      keyword: keyword || '',
-      location: location || '',
-      overallScore,
-      categories,
-      checks,
-    }).catch(e => console.error('Admin notify failed:', e))
+    // Await admin notification — fire-and-forget is killed by Vercel before it resolves
+    try {
+      await notifyNewLead({
+        email: email || '',
+        businessName,
+        url,
+        keyword: keyword || '',
+        location: location || '',
+        overallScore,
+        categories,
+        checks,
+      })
+    } catch (e) {
+      console.error('Admin notify failed:', e)
+    }
 
     return NextResponse.json(responseData)
   } catch (e) {
