@@ -65,11 +65,21 @@ export async function POST(req: NextRequest) {
 
   if (event.type === 'payment_intent.succeeded') {
     const intent = event.data.object as any
-    const email = intent.receipt_email || intent.metadata?.email
+    let email = intent.receipt_email || intent.metadata?.email
+
+    // Payment links don't set receipt_email on the PaymentIntent —
+    // look up the associated Checkout Session to find the customer email.
     if (!email) {
-      console.error('No email in payment_intent')
+      const sessions = await stripe.checkout.sessions.list({ payment_intent: intent.id, limit: 1 })
+      const session = sessions.data[0]
+      email = session?.customer_email || session?.customer_details?.email || session?.metadata?.email
+    }
+
+    if (!email) {
+      console.error('No email found for payment_intent:', intent.id)
       return NextResponse.json({ received: true })
     }
+
     await fulfillOrder(email, intent.amount || 4700, intent.id)
   }
 
