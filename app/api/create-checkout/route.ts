@@ -2,6 +2,18 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { saveAudit } from '@/lib/auditStore'
 
+const CHUNK = 490
+
+function auditToMetadata(audit: object): Record<string, string> {
+  const json = JSON.stringify(audit)
+  const count = Math.ceil(json.length / CHUNK)
+  const chunks: Record<string, string> = { ac: String(count) }
+  for (let i = 0; i < count; i++) {
+    chunks[`a${i}`] = json.slice(i * CHUNK, (i + 1) * CHUNK)
+  }
+  return chunks
+}
+
 export async function POST(req: NextRequest) {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
@@ -11,7 +23,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required data' }, { status: 400 })
     }
 
-    saveAudit(email, { email, businessName, url, keyword, location, overallScore, categories, checks })
+    const audit = { email, businessName, url, keyword, location, overallScore, categories, checks }
+    saveAudit(email, audit)
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://seo-score-tester.vercel.app'
 
@@ -32,7 +45,7 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      metadata: { email, businessName, url },
+      metadata: { email, businessName, url, ...auditToMetadata(audit) },
       return_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
     })
 
