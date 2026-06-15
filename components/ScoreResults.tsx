@@ -1,8 +1,7 @@
 'use client'
 
-import { useState, useEffect, lazy, Suspense } from 'react'
-import dynamic from 'next/dynamic'
-const EmbeddedCheckoutModal = dynamic(() => import('./EmbeddedCheckout'), { ssr: false })
+import { useState, useEffect } from 'react'
+
 import { ScoreResult, AuditData, SEOCheck } from '@/app/page'
 
 interface Props {
@@ -53,9 +52,10 @@ export default function ScoreResults({ results, auditData, onRetry }: Props) {
   const [emailSent, setEmailSent] = useState(false)
   const [emailSending, setEmailSending] = useState(false)
   const [checkoutLoading, setCheckoutLoading] = useState(false)
-  const [showCheckout, setShowCheckout] = useState(false)
 
-  const handleUnlock = () => setShowCheckout(true)
+  const handleUnlock = () => {
+    window.location.href = 'https://buy.stripe.com/test_4gM14p9YI5oAdPaddL1VK00'
+  }
 
   const score = results.overallScore
   const scoreColor = getScoreColor(score)
@@ -266,22 +266,7 @@ export default function ScoreResults({ results, auditData, onRetry }: Props) {
           </div>
         </div>
 
-        {showCheckout && (
-          <EmbeddedCheckoutModal
-            auditData={{
-              email: auditData.email,
-              businessName: auditData.businessName,
-              url: auditData.url,
-              keyword: auditData.keyword,
-              location: auditData.location,
-              overallScore: results.overallScore,
-              categories: results.categories,
-              checks: results.checks,
-            }}
-            onClose={() => setShowCheckout(false)}
-          />
-        )}
-        <p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '0.7rem', marginTop: '1.5rem' }}>
+<p style={{ textAlign: 'center', color: 'var(--muted)', fontSize: '0.7rem', marginTop: '1.5rem' }}>
           Score based on real-time crawl of your live website across {results.checks.length} SEO signals · <a href="mailto:contact@esmian.com" style={{ color: 'var(--accent)', textDecoration: 'none' }}>contact@esmian.com</a>
         </p>
       </div>
