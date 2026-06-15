@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 
-const ADMIN_EMAIL = 'contact@esmian.com'
+const ADMIN_EMAIL = 'dani.maier07@gmail.com'
 
 function getScoreColor(score: number) {
   if (score >= 80) return '#22c55e'
