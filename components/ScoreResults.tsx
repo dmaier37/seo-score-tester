@@ -251,7 +251,7 @@ export default function ScoreResults({ results, auditData, onRetry }: Props) {
               <div style={{ background: 'rgba(108,71,255,0.25)', border: '1px solid rgba(108,71,255,0.5)', borderRadius: '8px', padding: '0.4rem 0.75rem', marginBottom: '0.75rem', display: 'inline-block' }}>
                 <span style={{ fontSize: '0.8rem', color: '#c4b5fd', fontWeight: 700 }}>$97/mo ongoing SEO + monthly reports</span>
               </div>
-              <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.55 }}>Book your free call and sign up for ongoing support — get your <strong style={{ color: '#22c55e' }}>first 3 months free</strong>, then $97/mo. Already bought the report? Just pay $50 to start.</p>
+              <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.55 }}>Book your free call and sign up for ongoing support — get your <strong style={{ color: '#22c55e' }}>first 3 months free</strong>, then $97/mo. Already paid the $47? No worries — your first month will be just $50 instead of $97.</p>
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1.25rem', flex: 1 }}>
               {['Free 30-min strategy call — no pressure', 'First 3 months of SEO support FREE', 'We handle every fix for you', 'Rank higher on Google, get more leads', 'Monthly reports showing your progress'].map(f => (
