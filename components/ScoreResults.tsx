@@ -251,10 +251,10 @@ export default function ScoreResults({ results, auditData, onRetry }: Props) {
               <div style={{ background: 'rgba(108,71,255,0.25)', border: '1px solid rgba(108,71,255,0.5)', borderRadius: '8px', padding: '0.4rem 0.75rem', marginBottom: '0.75rem', display: 'inline-block' }}>
                 <span style={{ fontSize: '0.8rem', color: '#c4b5fd', fontWeight: 700 }}>$97/mo ongoing SEO + monthly reports</span>
               </div>
-              <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.55 }}>Already bought the report? Apply your $47 toward this — just pay $50 to start.</p>
+              <p style={{ fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.55 }}>Already bought the report? Apply your $47 toward this — just pay $50 to start. We'll handle everything.</p>
             </div>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem', marginBottom: '1.25rem', flex: 1 }}>
-              {['Free 30-min strategy call — no pressure', 'I handle every fix for you', 'Your score improves every single month', 'Rank higher on Google, get more leads', 'Monthly report so you see the progress'].map(f => (
+              {['Free 30-min strategy call — no pressure', 'We handle every fix for you', 'Your score improves every single month', 'Rank higher on Google, get more leads', 'Monthly report so you see the progress'].map(f => (
                 <li key={f} style={{ display: 'flex', gap: '0.5rem', fontSize: '0.8rem', color: 'var(--muted)' }}>
                   <span style={{ color: '#a78bfa', flexShrink: 0 }}>✓</span>{f}
                 </li>
