@@ -45,8 +45,8 @@ export default function SuccessPage() {
             <a href="mailto:contact@esmian.com" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text)', textDecoration: 'none', fontSize: '0.9rem' }}>
               <span>📧</span> contact@esmian.com
             </a>
-            <a href="tel:+1PLACEHOLDER" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text)', textDecoration: 'none', fontSize: '0.9rem' }}>
-              <span>📞</span> (XXX) XXX-XXXX
+            <a href="tel:+16405002399" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text)', textDecoration: 'none', fontSize: '0.9rem' }}>
+              <span>📞</span> (640) 500-2399
             </a>
           </div>
           <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.75rem', lineHeight: 1.5 }}>
